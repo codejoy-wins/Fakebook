@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^update/(?P<record_id>\d+)$', views.update),
     url(r'^wall/(?P<wall_id>\d+)$', views.wall),
     url(r'^post/(?P<wall_id>\d+)$', views.post),
+    url(r'^like/(?P<post_id>\d+)$', views.like),
+    url(r'^comment/(?P<post_id>\d+)$', views.comment),
 
     url(r'^', views.odell),
 ]

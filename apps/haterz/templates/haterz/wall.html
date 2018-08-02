@@ -20,9 +20,21 @@
     {% endfor %} -->
     <h2>Posts for here</h2>
     {% for post in my_posts %}
-        <p>{{post.content}} by {{post.author.first_name}} at {{post.created_at}}</p>
+        <h4>{{post.content}} by {{post.author.first_name}} at {{post.created_at}} <a href="/like/{{post.id}}">Like</a> </h4>
+        Comments on this post:
+        {% for comment in comments %}
+            {% if comment.post.id == post.id%}
+                <h5>{{comment.content}} by {{comment.author.first_name}} at {{comment.created_at}}</h5>
+            {% endif %}
+        {% endfor %}
+        <form action="/comment/{{post.id}}" method="POST">
+            {% csrf_token %}
+            <textarea name="content" id="c" cols="30" rows="10"></textarea>
+            <input type="submit" value = "Comment">
+        </form>
+        <!-- <a href="/comment/{{post.id}}">Comment</a> -->
     {% endfor %}
-
+        <p></p>
     <a href="/main">Return to Main Page</a>
 </body>
 </html>

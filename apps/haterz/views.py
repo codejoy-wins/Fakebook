@@ -190,24 +190,47 @@ def wall(request, wall_id):
         "main_user": main_user,
         "user": user,
         "posts": x,
-        "my_posts": Post.objects.filter(location=user)
+        "my_posts": Post.objects.filter(location=user),
+        "comments": Comment.objects.all()
     }
     return render(request, "haterz/wall.html", context)
 
 def post(request, wall_id):
     loc = User.objects.get(id=wall_id)
-    print "posting"
-    print request.POST['content']
-    print "on"
+    # print "posting"
+    # print request.POST['content']
+    # print "on"
     print wall_id
     user = User.objects.get(id=request.session['user_id'])
-    print 'from'
-    print user.id
+    # print 'from'
+    # print user.id
     post = Post.objects.create(content=request.POST['content'], author = user, location = loc)
-    print post.author.first_name
-    print post.location.first_name
+    # print post.author.first_name
+    # print post.location.first_name
 
     return redirect('/wall/'+ wall_id)
+
+def like(request, post_id):
+    post = Post.objects.get(id=post_id)
+    wall = post.location
+    print post
+    print wall
+    print "liking"
+    print post_id
+    return redirect('/')
+    # redirect to /main/wall_id where wall_id = post.location.id
+
+def comment(request, post_id):
+    post = Post.objects.get(id=post_id)
+    wall = post.location
+    author = User.objects.get(id=request.session['user_id'])
+    print post.author.first_name
+    print wall.first_name
+    print "commenting"
+    print post_id
+    Comment.objects.create(content=request.POST['content'], post = post, author = author)
+    x = str(wall.id)
+    return redirect('/wall/' + x)
 
 
 def odell(request):
