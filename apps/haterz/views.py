@@ -191,7 +191,12 @@ def wall(request, wall_id):
         "user": user,
         "posts": x,
         "my_posts": Post.objects.filter(location=user),
-        "comments": Comment.objects.all()
+        "comments": Comment.objects.all(),
+        # likers: 
+        #p = Post.objects.get(id=8)
+        #p.liked_by.all().count()
+        #max = User.objects.get(id=4)
+        #max.liked_posts.all()
     }
     return render(request, "haterz/wall.html", context)
 
@@ -213,11 +218,16 @@ def post(request, wall_id):
 def like(request, post_id):
     post = Post.objects.get(id=post_id)
     wall = post.location
+    user = User.objects.get(id=request.session['user_id'])
     print post
     print wall
     print "liking"
     print post_id
-    return redirect('/')
+    post.liked_by.add(user)
+    print "added liked by"
+    x = str(wall.id)
+    # work on concatening strings, dude.
+    return redirect('/wall/' + x)
     # redirect to /main/wall_id where wall_id = post.location.id
 
 def comment(request, post_id):

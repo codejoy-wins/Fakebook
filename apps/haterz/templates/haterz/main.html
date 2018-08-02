@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Welcome, {{user.first_name}}, Your user id is: {{user.id}}</h1>
+    <a href="/wall/{{user.id}}">Vist your wall?</a>
     <form action="/add" method="POST">
         {% csrf_token %}
         <p><label for="artist">Artist</label> <input type="text" name="artist" id = "artist"></p>

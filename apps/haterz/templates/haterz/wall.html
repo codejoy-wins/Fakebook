@@ -20,7 +20,12 @@
     {% endfor %} -->
     <h2>Posts for here</h2>
     {% for post in my_posts %}
-        <h4>{{post.content}} by {{post.author.first_name}} at {{post.created_at}} <a href="/like/{{post.id}}">Like</a> </h4>
+        <h4>{{post.content}} by {{post.author.first_name}} at {{post.created_at}} {{post.liked_by.all.count}} like(s)   <a href="/like/{{post.id}}">Like</a> </h4>
+
+        {% for x in post.liked_by.all %}
+           <p>  Liked by {{x.first_name}} </p>
+        {% endfor %}
+
         Comments on this post:
         {% for comment in comments %}
             {% if comment.post.id == post.id%}
@@ -29,12 +34,18 @@
         {% endfor %}
         <form action="/comment/{{post.id}}" method="POST">
             {% csrf_token %}
-            <textarea name="content" id="c" cols="30" rows="10"></textarea>
+            <textarea name="content" id="c" cols="30" rows="5"></textarea>
             <input type="submit" value = "Comment">
         </form>
         <!-- <a href="/comment/{{post.id}}">Comment</a> -->
     {% endfor %}
         <p></p>
     <a href="/main">Return to Main Page</a>
+
+    <!-- # likers: 
+        #p = Post.objects.get(id=8)
+        #p.liked_by.all().count()
+        #max = User.objects.get(id=4)
+        #max.liked_posts.all() -->
 </body>
 </html>
