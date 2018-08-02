@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Updater</title>
+</head>
+<body>
+    <h1>Update Record {{record.album}} by {{record.artist}}</h1>
+
+    <form action="/update/{{record.id}}" method="POST">
+        {% csrf_token %}
+        <p><input type="text" name = "artist" value = "{{record.artist}}"></p>
+        <p><input type="text" name = "album" value = "{{record.album}}"></p>
+        <p><input type="text" name = "label" value = "{{record.label}}"></p>
+        <p><input type="submit" value="update"></p>
+    </form>
+</body>
+</html>

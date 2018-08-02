@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main</title>
+</head>
+<body>
+    <h1>Welcome, {{user.first_name}}, Your user id is: {{user.id}}</h1>
+    <form action="/add" method="POST">
+        {% csrf_token %}
+        <p><label for="artist">Artist</label> <input type="text" name="artist" id = "artist"></p>
+        <p><label for="album">Album</label> <input type="text" name="album" id="album"></p>
+        <p><label for="label">Label</label> <input type="text" name="label" id="label"></p>
+        <p><input type="submit" value="Add Record"></p>
+    </form>
+    
+    <h2>All Records</h2>
+    {% for record in records %}
+        <p>{{record.album}} by {{record.artist}} from {{record.label}}<a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
+    {% endfor %}
+    <h2>Hated Records</h2>
+    {% for record in hated %}
+        <p>{{record.album}} by {{record.artist}} from {{record.label}}<a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
+    {% endfor %}
+
+
+
+
+
+    <a href="/logout" name = "logout"><label for="logout">Logout</label></a>
+
+</body>
+</html>
