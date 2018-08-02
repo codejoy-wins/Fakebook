@@ -20,3 +20,19 @@ class Record(models.Model):
     haters = models.ManyToManyField(User, related_name="hated_records")
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
+
+class Post(models.Model):
+    content = models.TextField()
+    author = models.ForeignKey(User, related_name="posts")
+    liked_by = models.ManyToManyField(User, related_name="liked_posts")
+    location = models.ForeignKey(User, related_name="posts_for_me", null = True) 
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+class Comment(models.Model):
+    content = models.TextField()
+    post = models.ForeignKey(Post, related_name="comments")
+    author = models.ForeignKey(User, related_name="written_comments")
+    liked_by = models.ManyToManyField(User, related_name="liked_comments")
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)

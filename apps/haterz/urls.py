@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^destroy/(?P<record_id>\d+)$', views.destroy),
     url(r'^hate/(?P<record_id>\d+)$', views.hate),
     url(r'^update/(?P<record_id>\d+)$', views.update),
+    url(r'^wall/(?P<wall_id>\d+)$', views.wall),
+    url(r'^post/(?P<wall_id>\d+)$', views.post),
 
     url(r'^', views.odell),
 ]

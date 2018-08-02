@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from models import User, Record
+from models import *
 
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
@@ -25,7 +25,8 @@ def main(request):
         # "records": Record.objects.all(),
         "records": Record.objects.exclude(haters = user),
         "hated": user.hated_records.all(),
-        "user": user
+        "user": user,
+        "users": User.objects.all()
     }
     return render(request, "haterz/main.html", context)
 
@@ -70,6 +71,9 @@ def register(request):
     return redirect('/main')
 
 def login(request):
+    if not request.POST:
+        print "wtf"
+        return redirect('/')
     if len(request.POST['email']) == 0:
         messages.error(request,'Must have email to log on')
     if len(request.POST['password']) ==0:
@@ -120,6 +124,9 @@ def logout(request):
     return redirect('/')
 
 def destroy(request, record_id):
+    if not 'user_id' in request.session:
+        messages.error(request, "knock it off")
+        return redirect ('/')
     print "destroying"
     print record_id
     Record.objects.get(id=record_id).delete()
@@ -129,6 +136,9 @@ def destroy(request, record_id):
 # def update where we prepopulate the form
 
 def edit(request, record_id):
+    if not 'user_id' in request.session:
+        messages.error(request, "knock it off")
+        return redirect ('/')
     print "editing"
     print record_id
     record = Record.objects.get(id=record_id)
@@ -142,6 +152,9 @@ def edit(request, record_id):
 # use many to many to hate records
 
 def hate(request, record_id):
+    if not 'user_id' in request.session:
+        messages.error(request, "knock it off")
+        return redirect ('/')
     print "hating"
     print record_id
     record = Record.objects.get(id=record_id)
@@ -159,6 +172,42 @@ def update(request, record_id):
     record.label = request.POST['label']
     record.save()
     return redirect('/main')
+
+def wall(request, wall_id):
+    main_user = User.objects.get(id=request.session['user_id'])
+    print "walling"
+    print "wall_id"
+    print wall_id
+    user = User.objects.get(id = wall_id)
+    print user
+    print user.first_name
+    try:
+        x = Post.objects.all()
+    except:
+        x = ['linkin', 'park']
+    # location = 
+    context = {
+        "main_user": main_user,
+        "user": user,
+        "posts": x,
+        "my_posts": Post.objects.filter(location=user)
+    }
+    return render(request, "haterz/wall.html", context)
+
+def post(request, wall_id):
+    loc = User.objects.get(id=wall_id)
+    print "posting"
+    print request.POST['content']
+    print "on"
+    print wall_id
+    user = User.objects.get(id=request.session['user_id'])
+    print 'from'
+    print user.id
+    post = Post.objects.create(content=request.POST['content'], author = user, location = loc)
+    print post.author.first_name
+    print post.location.first_name
+
+    return redirect('/wall/'+ wall_id)
 
 
 def odell(request):
