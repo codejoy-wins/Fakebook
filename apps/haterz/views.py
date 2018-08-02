@@ -22,7 +22,7 @@ def main(request):
     user = User.objects.get(id=request.session['user_id'])
     context = {
         "jay": "silent bob",
-        # "records": Record.objects.all(),
+        "users2": User.objects.exclude(id=user.id),
         "records": Record.objects.exclude(haters = user),
         "hated": user.hated_records.all(),
         "user": user,
@@ -242,6 +242,9 @@ def comment(request, post_id):
     x = str(wall.id)
     return redirect('/wall/' + x)
 
+def custom(request):
+    print "customizing"
+    return redirect('/main')
 
 def odell(request):
     return HttpResponse("odell catches everything")

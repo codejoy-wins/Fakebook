@@ -7,8 +7,48 @@
     <title>Main</title>
 </head>
 <body>
-    <h1>Welcome, {{user.first_name}}, Your user id is: {{user.id}}</h1>
+    <h1>Welcome, {{user.first_name}} {{user.last_name}}</h1>
     <a href="/wall/{{user.id}}">Vist your wall?</a>
+    <h3>Customize your settings</h3>
+    <form action="/custom" method="POST">
+        {% csrf_token %}
+        <p> <label for="b_color">Choose Background Color</label> <select id="b_color">
+                <option value="white">White</option>
+                <option value="red">red</option>
+                <option value="green">green</option>
+                <option value="black">black</option>
+                <option value="blue">blue</option>
+              </select></p>
+        <p> <label for="b_color">Choose Text Color</label>
+            <select id="b_color">
+            <option value="black">Black</option>
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="gold">gold</option>
+            <option value="white">white</option>
+            <option value="blue">blue</option>
+            </select>
+        </p>
+        <p> <label for="b_color">Choose Theme</label>
+            <select id="b_color">
+            <option value="standard">Standard</option>
+            <option value="sports">sports</option>
+            <option value="video_games">video_games</option>
+            <option value="space">space</option>
+            <option value="cars">cars</option>
+            <option value="girls">girls</option>
+            </select>
+        </p>
+        <p><input type="submit" value="Customize"></p>
+    </form>
+    
+    
+
+    <h1>Other Users</h1>
+    {% for user in users2 %}
+        <p><a href="/wall/{{user.id}}">{{user.last_name}}, {{user.first_name}}</a></p>
+    {% endfor %}
+            <h2><a href="/logout" name = "logout"><label for="logout">Logout</label></a></h2>
     <form action="/add" method="POST">
         {% csrf_token %}
         <p><label for="artist">Artist</label> <input type="text" name="artist" id = "artist"></p>
@@ -16,7 +56,6 @@
         <p><label for="label">Label</label> <input type="text" name="label" id="label"></p>
         <p><input type="submit" value="Add Record"></p>
     </form>
-    
     <h2>All Records</h2>
     {% for record in records %}
         <p>{{record.album}} by {{record.artist}} from {{record.label}}<a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
@@ -32,14 +71,6 @@
             {% endfor %}
     {% endfor %}
 
-
-    <h1>All Users</h1>
-    {% for user in users %}
-        <p>{{user.id}}</p>
-        <a href="/wall/{{user.id}}">{{user.last_name}}, {{user.first_name}}</a>
-    {% endfor %}
-            <p></p>
-    <a href="/logout" name = "logout"><label for="logout">Logout</label></a>
 
 </body>
 </html>

@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^post/(?P<wall_id>\d+)$', views.post),
     url(r'^like/(?P<post_id>\d+)$', views.like),
     url(r'^comment/(?P<post_id>\d+)$', views.comment),
+    url(r'^custom$', views.custom),
 
     url(r'^', views.odell),
 ]

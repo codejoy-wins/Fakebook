@@ -1,0 +1,9 @@
+.pink{
+    color:pink;
+}
+.blue {
+    color:blue;
+}
+#rapper {
+    background: linear-gradient(pink, blue);
+}
