@@ -5,47 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wall</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'haterz/css/main.css' %}">
 </head>
 <body>
-    <h1>{{user.first_name}}'s Wall</h1>
-    <h2>Write a post</h2>
-    <form action="/post/{{user.id}}" method="POST">
-        {% csrf_token %}
-        <p><textarea name="content" id="post" cols="30" rows="10"></textarea></p>
-        <p><input type="submit" value="Post"></p>
-    </form>
-    <!-- <h2>Posts so far</h2>
-    {% for post in posts %}
-        <p>{{post.content}} by {{post.author.first_name}}</p>
-    {% endfor %} -->
-    <h2>Posts for here</h2>
-    {% for post in my_posts %}
-        <h4>{{post.content}} by {{post.author.first_name}} at {{post.created_at}} {{post.liked_by.all.count}} like(s)   <a href="/like/{{post.id}}">Like</a> </h4>
-
-        {% for x in post.liked_by.all %}
-           <p>  Liked by {{x.first_name}} </p>
-        {% endfor %}
-
-        Comments on this post:
-        {% for comment in comments %}
-            {% if comment.post.id == post.id%}
-                <h5>{{comment.content}} by {{comment.author.first_name}} at {{comment.created_at}}</h5>
-            {% endif %}
-        {% endfor %}
-        <form action="/comment/{{post.id}}" method="POST">
+    <div id ="{{settings.theme}}">
+        <h1>{{user.first_name}}'s Wall</h1>
+        <h2>Write a post</h2>
+        <form action="/post/{{user.id}}" method="POST">
             {% csrf_token %}
-            <textarea name="content" id="c" cols="30" rows="5"></textarea>
-            <input type="submit" value = "Comment">
+            <p><textarea name="content" id="post" cols="30" rows="10"></textarea></p>
+            <p><input type="submit" value="Post"></p>
         </form>
-        <!-- <a href="/comment/{{post.id}}">Comment</a> -->
-    {% endfor %}
-        <p></p>
-    <a href="/main">Return to Main Page</a>
-
-    <!-- # likers: 
-        #p = Post.objects.get(id=8)
-        #p.liked_by.all().count()
-        #max = User.objects.get(id=4)
-        #max.liked_posts.all() -->
+        <!-- <h2>Posts so far</h2>
+        {% for post in posts %}
+            <p>{{post.content}} by {{post.author.first_name}}</p>
+        {% endfor %} -->
+        <h2>Posts for here</h2>
+        {% for post in my_posts %}
+            <h4>{{post.content}} by {{post.author.first_name}} at {{post.created_at}} {{post.liked_by.all.count}} like(s)   <a href="/like/{{post.id}}">Like</a> </h4>
+    
+            {% for x in post.liked_by.all %}
+                <p>  Liked by {{x.first_name}} </p>
+            {% endfor %}
+    
+            Comments on this post:
+            {% for comment in comments %}
+                {% if comment.post.id == post.id%}
+                    <h5>{{comment.content}} by {{comment.author.first_name}} at {{comment.created_at}}</h5>
+                {% endif %}
+            {% endfor %}
+            <form action="/comment/{{post.id}}" method="POST">
+                {% csrf_token %}
+                <textarea name="content" id="c" cols="30" rows="5"></textarea>
+                <input type="submit" value = "Comment">
+            </form>
+            <!-- <a href="/comment/{{post.id}}">Comment</a> -->
+        {% endfor %}
+            <p></p>
+        <a href="/main">Return to Main Page</a>
+        <h2>Look at me {{settings}}</h2>
+        <h4>Setting XP</h4>
+        <h4>This should all be styled by settings</h4>
+        <h3 class = "{{settings.text_color}}">settings.text_color is: {{settings.text_color}}</h3>
+        <h2>{{settings.theme}}</h2>
+    
+        <!-- # likers: 
+            #p = Post.objects.get(id=8)
+            #p.liked_by.all().count()
+            #max = User.objects.get(id=4)
+            #max.liked_posts.all() -->
+    </div>
 </body>
 </html>

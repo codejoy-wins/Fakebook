@@ -21,6 +21,14 @@ class Record(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
+class Settings(models.Model):
+    background_color = models.CharField(max_length=255)
+    text_color = models.CharField(max_length=255)
+    theme = models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name= "personal_settings")
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
 class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, related_name="posts")

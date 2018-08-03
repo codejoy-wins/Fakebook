@@ -8,6 +8,8 @@ from datetime import datetime
 import bcrypt
 import re
 
+
+
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 
@@ -20,7 +22,16 @@ def main(request):
         messages.error(request, "must be logged on first")
         return redirect('/')
     user = User.objects.get(id=request.session['user_id'])
+
+
+    try:
+        print "TRY HARD"
+        # settings = Settings.objects.get(user= request.session['user_id'])
+        settings = Settings.objects.filter(user= request.session['user_id']).last()
+    except:
+        settings = Settings.objects.create(background_color="white", text_color="green", theme="standard", user = User.objects.get(id=request.session['user_id']))
     context = {
+        "settings": settings,
         "jay": "silent bob",
         "users2": User.objects.exclude(id=user.id),
         "records": Record.objects.exclude(haters = user),
@@ -185,8 +196,20 @@ def wall(request, wall_id):
         x = Post.objects.all()
     except:
         x = ['linkin', 'park']
-    # location = 
+    try:
+        settings = Settings.objects.filter(user=user).last()
+    except:
+        settings = "it broke"
+        print "it broke bad"
+    if settings == None:
+        print "okay it's none"
+        # settings = 
+        Settings.objects.create(background_color="white",text_color="black", theme="space", user=user)
+        return redirect('/wall/'+ wall_id)
+    else:
+        print "something there" 
     context = {
+        "settings" : settings,
         "main_user": main_user,
         "user": user,
         "posts": x,
@@ -243,8 +266,15 @@ def comment(request, post_id):
     return redirect('/wall/' + x)
 
 def custom(request):
+
     print "customizing"
+    print request.POST['background_color']
+    print request.POST['text_color']
+    print request.POST['theme']
+    Settings.objects.create(background_color=request.POST['background_color'], text_color = request.POST['text_color'], theme= request.POST['theme'], user = User.objects.get(id=request.session['user_id']))
+
+
     return redirect('/main')
 
 def odell(request):
-    return HttpResponse("odell catches everything")
+    return render(request, "haterz/odell.html")
