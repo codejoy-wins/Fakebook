@@ -17,19 +17,19 @@
         <h2>Register</h2>
         <form action="/register" method="POST">
             {% csrf_token %}
-            <p>First Name: <input type="text" name="first_name"></p>
-            <p>Last Name: <input type="text" name="last_name"></p>
-            <p>Email: <input type="email" name="email"></p>
-            <p>Password: <input type="password" name="password"></p>
-            <p>Confirm Password: <input type="password" name="confirm_password"></p>
-            <p>Date of Birth: <input type="date" name="dob"></p>
+            <p><label for="first_name">First Name: </label> <input type="text" name="first_name" id="first_name"></p>
+            <p><label for="last_name">Last Name: </label> <input type="text" name="last_name" id = "last_name"></p>
+            <p><label for="email">Email: </label><input type="email" name="email" id = "email"></p>
+            <p> <label for="password">Password: </label><input type="password" name="password" id="password"></p>
+            <p><label for="confirm_password">Confirm Password: </label> <input type="password" name="confirm_password" id="confirm_password"></p>
+            <p><label for="dob">Date of Birth: </label> <input type="date" name="dob" id="dob"></p>
             <p><input type="submit" value="Register"></p>
         </form>
         <h2>Login</h2>
         <form action="/login" method="POST">
             {% csrf_token %}
-            <p>Email: <input type="email" name="email"></p>
-            <p>Password: <input type="password" name="password"></p>
+            <p><label for="email2">Email: </label> <input type="email" name="email" id="email2"></p>
+            <p><label for="password2">Password: </label><input type="password" name="password" id="password2"></p>
             <p><input type="submit" value="Login"></p>
         </form>
         <h3>Music</h3>

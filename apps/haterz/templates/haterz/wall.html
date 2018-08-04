@@ -11,6 +11,7 @@
 <body>
     <div id ="{{settings.background_color}}" class = "{{settings.text_color}} {{settings.theme}}">
         <h1>{{user.first_name}}'s Wall</h1>
+        <a href="/main">Return to Main Page?</a>
         <h2>Write a post</h2>
         <form action="/post/{{user.id}}" method="POST">
             {% csrf_token %}
@@ -44,17 +45,11 @@
         {% endfor %}
             <p></p>
         <a href="/main">Return to Main Page</a>
-        <h2>Look at me {{settings}}</h2>
-        <h4>Setting XP</h4>
-        <h4>This should all be styled by settings</h4>
-        <h3 class = "{{settings.text_color}}">settings.text_color is: {{settings.text_color}}</h3>
-        <h2>{{settings.theme}}</h2>
-    
-        <!-- # likers: 
-            #p = Post.objects.get(id=8)
-            #p.liked_by.all().count()
-            #max = User.objects.get(id=4)
-            #max.liked_posts.all() -->
+
+
+        <h2>Your Settings: {{settings}}</h2>
+        <h3 class = "{{settings.text_color}}">Your text color is: {{settings.text_color}}</h3>
+        <h2> Your theme is: {{settings.theme}}</h2>
     </div>
 </body>
 </html>

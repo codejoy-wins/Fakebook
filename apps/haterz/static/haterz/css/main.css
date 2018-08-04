@@ -1,113 +1,235 @@
 /* #rapper{
-    margin:0 auto;
-    padding:20px;
+    padding:5px;
 } */
+
+#other{
+    height:400px;
+    overflow: auto;
+}
+#hated{
+    height:200px;
+    overflow: auto;
+}
+#all_records{
+    height:200px;
+    overflow: auto;
+}
+
 /* themes */
 .video_games{
     background-image:url("/static/haterz/images/blackops.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .sports{
     background-image:url("/static/haterz/images/ab.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
 }
 .space{
     background-image:url("/static/haterz/images/pikachu.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .cars{
     background-image:url("/static/haterz/images/car.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .girls{
     background-image:url("/static/haterz/images/hot.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
 }
 .helmet{
     background-image:url("/static/haterz/images/helmet.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
 }
 .maybe{
     background-image:url("/static/haterz/images/maybe.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .josh{
     background-image:url("/static/haterz/images/josh.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .miraak{
     background-image:url("/static/haterz/images/miraak.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .got{
     background-image:url("/static/haterz/images/jonsnow.jpg");
     background-repeat: no-repeat;
+    background-size: 100%;
 }
 .ice{
     background-image:url("/static/haterz/images/ice.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
 }
 .mw{
     background-image:url("/static/haterz/images/mw.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .skyrim{
     background-image:url("/static/haterz/images/skyrim.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .ned{
     background-image:url("/static/haterz/images/ned.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .snake{
     background-image:url("/static/haterz/images/snake.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .watson{
     background-image:url("/static/haterz/images/watson.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .snow{
     background-image:url("/static/haterz/images/snow.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .marcus{
     background-image:url("/static/haterz/images/marcus.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .jg{
     background-image:url("/static/haterz/images/jg.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .gow{
     background-image:url("/static/haterz/images/gow.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .dishonored{
     background-image:url("/static/haterz/images/dishonored.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .deshaun{
     background-image:url("/static/haterz/images/deshaun.jpg");
     background-repeat: no-repeat;
+    background-size:100%;
+
 }
 .cod{
     background-image:url("/static/haterz/images/cod.jpg");
     background-repeat: no-repeat;
-}
+    background-size:100%;
 
-/* <option value="mw">mw</option>
-                <option value="skyrim">skyrim</option>
-                <option value="ned">ned</option>
-                <option value="snake">snake</option>
-                <option value="watson">watson</option>
-                <option value="snow">snow</option>
-                <option value="marcus">marcus</option>
-                <option value="jg">jg</option>
-                <option value="gow">gow</option>
-                <option value="dishonored">dishonored</option>
-                <option value="deshaun">deshaun</option>
-                <option value="cod">cod</option> */
+}
+.leveon{
+    background-image:url("/static/haterz/images/leveon.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.gurley{
+    background-image:url("/static/haterz/images/gurley.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.flame{
+    background-image:url("/static/haterz/images/flame.jpg");
+    background-size: 100%;
+}
+.fire{
+    background-image:url("/static/haterz/images/fire.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.dragon{
+    background-image:url("/static/haterz/images/dragon.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.dom{
+    background-image:url("/static/haterz/images/dom.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.delta{
+    background-image:url("/static/haterz/images/delta.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.chief{
+    background-image:url("/static/haterz/images/chief.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.bubble{
+    background-image:url("/static/haterz/images/bubble.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.bell{
+    background-image:url("/static/haterz/images/bell.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.alduin{
+    background-image:url("/static/haterz/images/alduin.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.anya{
+    background-image:url("/static/haterz/images/anya.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.blackops{
+    background-image:url("/static/haterz/images/blackops.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+.jon{
+    background-image:url("/static/haterz/images/jon.jpg");
+    background-repeat: no-repeat;
+    background-size:100%;
+}
 
 
 /* text colors */

@@ -31,7 +31,7 @@ def main(request):
     if settings == None:
         print "okay it's none"
         # settings = 
-        Settings.objects.create(background_color="white",text_color="black", theme="space", user=user)
+        Settings.objects.create(background_color="white",text_color="black", theme="standard", user=user)
         return redirect('/main')
     else:
         print "something there" 

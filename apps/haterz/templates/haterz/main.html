@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main</title>
+    <title>Mainx</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'haterz/css/main.css' %}">
 </head>
@@ -12,7 +12,7 @@
     <div id ="rapper">
         <div class = "{{settings.text_color}} {{settings.theme}}" id ="{{settings.background_color}}">
                 <h1 class="{{settings.text_color}}">Welcome, {{user.first_name}} {{user.last_name}}</h1>
-                <a href="/wall/{{user.id}}">Vist your wall?</a>
+                <a href="/wall/{{user.id}}">Visit your wall?</a>
                 <h3>Customize your settings</h3>
                 <form action="/custom" method="POST">
                     {% csrf_token %}
@@ -62,18 +62,32 @@
                         <option value="dishonored">dishonored</option>
                         <option value="deshaun">deshaun</option>
                         <option value="cod">cod</option>
+                        <option value="tiger">tiger</option>
+                        <option value="leveon">leveon</option>
+                        <option value="gurley">gurley</option>
+                        <option value="flame">flame</option>
+                        <option value="fire">fire</option>
+                        <option value="dragon">dragon</option>
+                        <option value="dom">dom</option>
+                        <option value="delta">delta</option>
+                        <option value="chief">chief</option>
+                        <option value="bubble">bubble</option>
+                        <option value="bell">bell</option>
+                        <option value="alduin">alduin</option>
+                        <option value="anya">anya</option>
+                        <option value="blackops">blackops</option>
+                        <option value="jon">jon</option>
                         </select>
                     </p>
                     <p><input type="submit" value="Customize"></p>
                 </form>
+                <div id = "other">
+                    <h1>Other Users</h1>
+                    {% for user in users2 %}
+                        <p><a href="/wall/{{user.id}}">{{user.last_name}}, {{user.first_name}}</a></p>
+                    {% endfor %}
+                </div>
                 
-                
-            
-                <h1>Other Users</h1>
-                {% for user in users2 %}
-                    <p><a href="/wall/{{user.id}}">{{user.last_name}}, {{user.first_name}}</a></p>
-                {% endfor %}
-                        <h2><a href="/logout" name = "logout"><label for="logout">Logout</label></a></h2>
                 <form action="/add" method="POST">
                     {% csrf_token %}
                     <p><label for="artist">Artist</label> <input type="text" name="artist" id = "artist"></p>
@@ -81,27 +95,33 @@
                     <p><label for="label">Label</label> <input type="text" name="label" id="label"></p>
                     <p><input type="submit" value="Add Record"></p>
                 </form>
-                <h2>All Records</h2>
-                {% for record in records %}
-                    <p>{{record.album}} by {{record.artist}} from {{record.label}}<a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
-                {% endfor %}
-                <h2>Hated Records</h2>
-                {% for record in hated %}
-                    <p>{{record.album}} by {{record.artist}} from {{record.label}}
-                        
-                        <a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
-                        <i>Hated By:</i>
-                        {% for hater in record.haters.all %}
-                            <p>{{hater.first_name}} {{hater.last_name}}</p>
-                        {% endfor %}
-                {% endfor %}
-            
-                <h3>Settings Experiment</h3>
+                <div id = "all_records">
+                        <h2>All Records</h2>
+                    {% for record in records %}
+                        <p>{{record.album}} by {{record.artist}} from {{record.label}}<a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
+                    {% endfor %}
+                </div>
+                
+                <div id = "hated">
+                    <h2>Hated Records</h2>
+                    {% for record in hated %}
+                        <p>{{record.album}} by {{record.artist}} from {{record.label}}
+                            
+                            <a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
+                            <i>Hated By:</i>
+                            {% for hater in record.haters.all %}
+                                <p>{{hater.first_name}} {{hater.last_name}}</p>
+                            {% endfor %}
+                    {% endfor %}
+                </div>
+                
+                <h3>Your Settings</h3>
                 {{settings}}
-                {{settings.background_color}}
-                {{settings.text_color}}
-                {{settings.theme}}
-                <h1 class = "{{settings.text_color}}">I will change colors</h1>
+                <p>Your background color is: {{settings.background_color}}</p>
+                <p>Your text color is: {{settings.text_color}}</p>
+                <p>Your theme is: {{settings.theme}}</p>
+                <h2><a href="/logout" name = "logout"><label for="logout">Logout</label></a></h2>
+
             </div>
     </div>
     
