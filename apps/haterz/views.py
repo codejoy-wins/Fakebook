@@ -7,12 +7,7 @@ from django.contrib import messages
 from datetime import datetime
 import bcrypt
 import re
-
-
-
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-
-
 def index(request):
     return render(request, "haterz/index.html")
 
@@ -22,14 +17,24 @@ def main(request):
         messages.error(request, "must be logged on first")
         return redirect('/')
     user = User.objects.get(id=request.session['user_id'])
-
-
+    # try:
+    #     print "TRY HARD"
+    #     # settings = Settings.objects.get(user= request.session['user_id'])
+    #     settings = Settings.objects.filter(user= request.session['user_id']).last()
+    # except:
+    #     settings = Settings.objects.create(background_color="white", text_color="green", theme="standard", user = User.objects.get(id=request.session['user_id']))
     try:
-        print "TRY HARD"
-        # settings = Settings.objects.get(user= request.session['user_id'])
-        settings = Settings.objects.filter(user= request.session['user_id']).last()
+        settings = Settings.objects.filter(user=user).last()
     except:
-        settings = Settings.objects.create(background_color="white", text_color="green", theme="standard", user = User.objects.get(id=request.session['user_id']))
+        settings = "it broke"
+        print "it broke bad"
+    if settings == None:
+        print "okay it's none"
+        # settings = 
+        Settings.objects.create(background_color="white",text_color="black", theme="space", user=user)
+        return redirect('/main')
+    else:
+        print "something there" 
     context = {
         "settings": settings,
         "jay": "silent bob",
@@ -266,7 +271,16 @@ def comment(request, post_id):
     return redirect('/wall/' + x)
 
 def custom(request):
-
+    # I need to delete the old customization in db
+    print len(Settings.objects.filter(user=User.objects.get(id=request.session["user_id"])))
+    leng = len(Settings.objects.filter(user=User.objects.get(id=request.session["user_id"])))-3
+    #python for loop deleting old settings
+    print leng
+    if leng >7:
+        Settings.objects.filter(user=User.objects.get(id=request.session["user_id"])).first().delete()
+        Settings.objects.filter(user=User.objects.get(id=request.session["user_id"])).first().delete()
+        Settings.objects.filter(user=User.objects.get(id=request.session["user_id"])).first().delete()
+        Settings.objects.filter(user=User.objects.get(id=request.session["user_id"])).first().delete()
     print "customizing"
     print request.POST['background_color']
     print request.POST['text_color']

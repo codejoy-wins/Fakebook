@@ -9,78 +9,102 @@
     <link rel="stylesheet" href="{% static 'haterz/css/main.css' %}">
 </head>
 <body>
-    <div id = "{{settings.theme}}">
-        <h1 class="{{settings.text_color}}">Welcome, {{user.first_name}} {{user.last_name}}</h1>
-        <a href="/wall/{{user.id}}">Vist your wall?</a>
-        <h3>Customize your settings</h3>
-        <form action="/custom" method="POST">
-            {% csrf_token %}
-            <p> <label for="background_color">Choose Background Color</label> <select id="background_color" name="background_color">
-                    <option value="white">White</option>
-                    <option value="red">red</option>
-                    <option value="green">green</option>
-                    <option value="black">black</option>
-                    <option value="blue">blue</option>
-                    </select></p>
-            <p> <label for="text_color">Choose Text Color</label>
-                <select id="text_color" name="text_color">
-                <option value="black">Black</option>
-                <option value="red">red</option>
-                <option value="green">green</option>
-                <option value="gold">gold</option>
-                <option value="white">white</option>
-                <option value="blue">blue</option>
-                </select>
-            </p>
-            <p> <label for="theme">Choose Theme</label>
-                <select id="theme" name="theme">
-                <option value="standard">Standard</option>
-                <option value="sports">sports</option>
-                <option value="video_games">video_games</option>
-                <option value="space">space</option>
-                <option value="cars">cars</option>
-                <option value="girls">girls</option>
-                </select>
-            </p>
-            <p><input type="submit" value="Customize"></p>
-        </form>
-        
-        
-    
-        <h1>Other Users</h1>
-        {% for user in users2 %}
-            <p><a href="/wall/{{user.id}}">{{user.last_name}}, {{user.first_name}}</a></p>
-        {% endfor %}
-                <h2><a href="/logout" name = "logout"><label for="logout">Logout</label></a></h2>
-        <form action="/add" method="POST">
-            {% csrf_token %}
-            <p><label for="artist">Artist</label> <input type="text" name="artist" id = "artist"></p>
-            <p><label for="album">Album</label> <input type="text" name="album" id="album"></p>
-            <p><label for="label">Label</label> <input type="text" name="label" id="label"></p>
-            <p><input type="submit" value="Add Record"></p>
-        </form>
-        <h2>All Records</h2>
-        {% for record in records %}
-            <p>{{record.album}} by {{record.artist}} from {{record.label}}<a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
-        {% endfor %}
-        <h2>Hated Records</h2>
-        {% for record in hated %}
-            <p>{{record.album}} by {{record.artist}} from {{record.label}}
+    <div id ="rapper">
+        <div class = "{{settings.text_color}} {{settings.theme}}" id ="{{settings.background_color}}">
+                <h1 class="{{settings.text_color}}">Welcome, {{user.first_name}} {{user.last_name}}</h1>
+                <a href="/wall/{{user.id}}">Vist your wall?</a>
+                <h3>Customize your settings</h3>
+                <form action="/custom" method="POST">
+                    {% csrf_token %}
+                    <p> <label for="background_color">Choose Background Color</label> <select id="background_color" name="background_color" value = "{{settings.background_color}}">
+                            <option value="{{settings.background_color}}">{{settings.background_color}}</option>
+                            <option value="white">White</option>
+                            <option value="red">red</option>
+                            <option value="green">green</option>
+                            <option value="black">black</option>
+                            <option value="blue">blue</option>
+                            </select></p>
+                    <p> <label for="text_color">Choose Text Color</label>
+                        <select id="text_color" name="text_color" value = "{{settings.text_color}}">
+                        <option value="{{settings.text_color}}">{{settings.text_color}}</option>
+                        <option value="black">Black</option>
+                        <option value="red">red</option>
+                        <option value="green">green</option>
+                        <option value="gold">gold</option>
+                        <option value="white">white</option>
+                        <option value="blue">blue</option>
+                        </select>
+                    </p>
+                    <p> <label for="theme">Choose Theme</label>
+                        <select id="theme" name="theme">
+                        <option value="{{settings.theme}}">{{settings.theme}}</option>
+                        <option value="standard">standard</option>
+                        <option value="sports">sports</option>
+                        <option value="video_games">video_games</option>
+                        <option value="space">space</option>
+                        <option value="cars">cars</option>
+                        <option value="girls">girls</option>
+                        <option value="maybe">maybe</option>
+                        <option value="josh">josh</option>
+                        <option value="miraak">miraak</option>
+                        <option value="got">got</option>
+                        <option value="ice">ice</option>
+                        <option value="helmet">helmet</option>
+                        <option value="mw">mw</option>
+                        <option value="skyrim">skyrim</option>
+                        <option value="ned">ned</option>
+                        <option value="snake">snake</option>
+                        <option value="watson">watson</option>
+                        <option value="snow">snow</option>
+                        <option value="marcus">marcus</option>
+                        <option value="jg">jg</option>
+                        <option value="gow">gow</option>
+                        <option value="dishonored">dishonored</option>
+                        <option value="deshaun">deshaun</option>
+                        <option value="cod">cod</option>
+                        </select>
+                    </p>
+                    <p><input type="submit" value="Customize"></p>
+                </form>
                 
-                <a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
-                <i>Hated By:</i>
-                {% for hater in record.haters.all %}
-                    <p>{{hater.first_name}} {{hater.last_name}}</p>
+                
+            
+                <h1>Other Users</h1>
+                {% for user in users2 %}
+                    <p><a href="/wall/{{user.id}}">{{user.last_name}}, {{user.first_name}}</a></p>
                 {% endfor %}
-        {% endfor %}
-    
-        <h3>Settings Experiment</h3>
-        {{settings}}
-        {{settings.background_color}}
-        {{settings.text_color}}
-        {{settings.theme}}
-        <h1 class = "{{settings.text_color}}">I will change colors</h1>
+                        <h2><a href="/logout" name = "logout"><label for="logout">Logout</label></a></h2>
+                <form action="/add" method="POST">
+                    {% csrf_token %}
+                    <p><label for="artist">Artist</label> <input type="text" name="artist" id = "artist"></p>
+                    <p><label for="album">Album</label> <input type="text" name="album" id="album"></p>
+                    <p><label for="label">Label</label> <input type="text" name="label" id="label"></p>
+                    <p><input type="submit" value="Add Record"></p>
+                </form>
+                <h2>All Records</h2>
+                {% for record in records %}
+                    <p>{{record.album}} by {{record.artist}} from {{record.label}}<a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
+                {% endfor %}
+                <h2>Hated Records</h2>
+                {% for record in hated %}
+                    <p>{{record.album}} by {{record.artist}} from {{record.label}}
+                        
+                        <a href="/edit/{{record.id}}">Edit</a> | <a href="/destroy/{{record.id}}">Delete</a> | <a href="/hate/{{record.id}}">Hate</a></p>
+                        <i>Hated By:</i>
+                        {% for hater in record.haters.all %}
+                            <p>{{hater.first_name}} {{hater.last_name}}</p>
+                        {% endfor %}
+                {% endfor %}
+            
+                <h3>Settings Experiment</h3>
+                {{settings}}
+                {{settings.background_color}}
+                {{settings.text_color}}
+                {{settings.theme}}
+                <h1 class = "{{settings.text_color}}">I will change colors</h1>
+            </div>
     </div>
+    
     
 
 </body>

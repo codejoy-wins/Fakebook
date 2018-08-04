@@ -1,3 +1,116 @@
+/* #rapper{
+    margin:0 auto;
+    padding:20px;
+} */
+/* themes */
+.video_games{
+    background-image:url("/static/haterz/images/blackops.jpg");
+    background-repeat: no-repeat;
+}
+.sports{
+    background-image:url("/static/haterz/images/ab.jpg");
+    background-repeat: no-repeat;
+}
+.space{
+    background-image:url("/static/haterz/images/pikachu.jpg");
+    background-repeat: no-repeat;
+}
+.cars{
+    background-image:url("/static/haterz/images/car.jpg");
+    background-repeat: no-repeat;
+}
+.girls{
+    background-image:url("/static/haterz/images/hot.jpg");
+    background-repeat: no-repeat;
+}
+.helmet{
+    background-image:url("/static/haterz/images/helmet.jpg");
+    background-repeat: no-repeat;
+}
+.maybe{
+    background-image:url("/static/haterz/images/maybe.jpg");
+    background-repeat: no-repeat;
+}
+.josh{
+    background-image:url("/static/haterz/images/josh.jpg");
+    background-repeat: no-repeat;
+}
+.miraak{
+    background-image:url("/static/haterz/images/miraak.jpg");
+    background-repeat: no-repeat;
+}
+.got{
+    background-image:url("/static/haterz/images/jonsnow.jpg");
+    background-repeat: no-repeat;
+}
+.ice{
+    background-image:url("/static/haterz/images/ice.jpg");
+    background-repeat: no-repeat;
+}
+.mw{
+    background-image:url("/static/haterz/images/mw.jpg");
+    background-repeat: no-repeat;
+}
+.skyrim{
+    background-image:url("/static/haterz/images/skyrim.jpg");
+    background-repeat: no-repeat;
+}
+.ned{
+    background-image:url("/static/haterz/images/ned.jpg");
+    background-repeat: no-repeat;
+}
+.snake{
+    background-image:url("/static/haterz/images/snake.jpg");
+    background-repeat: no-repeat;
+}
+.watson{
+    background-image:url("/static/haterz/images/watson.jpg");
+    background-repeat: no-repeat;
+}
+.snow{
+    background-image:url("/static/haterz/images/snow.jpg");
+    background-repeat: no-repeat;
+}
+.marcus{
+    background-image:url("/static/haterz/images/marcus.jpg");
+    background-repeat: no-repeat;
+}
+.jg{
+    background-image:url("/static/haterz/images/jg.jpg");
+    background-repeat: no-repeat;
+}
+.gow{
+    background-image:url("/static/haterz/images/gow.jpg");
+    background-repeat: no-repeat;
+}
+.dishonored{
+    background-image:url("/static/haterz/images/dishonored.jpg");
+    background-repeat: no-repeat;
+}
+.deshaun{
+    background-image:url("/static/haterz/images/deshaun.jpg");
+    background-repeat: no-repeat;
+}
+.cod{
+    background-image:url("/static/haterz/images/cod.jpg");
+    background-repeat: no-repeat;
+}
+
+/* <option value="mw">mw</option>
+                <option value="skyrim">skyrim</option>
+                <option value="ned">ned</option>
+                <option value="snake">snake</option>
+                <option value="watson">watson</option>
+                <option value="snow">snow</option>
+                <option value="marcus">marcus</option>
+                <option value="jg">jg</option>
+                <option value="gow">gow</option>
+                <option value="dishonored">dishonored</option>
+                <option value="deshaun">deshaun</option>
+                <option value="cod">cod</option> */
+
+
+/* text colors */
 .gold{
     color:gold
 }
@@ -16,15 +129,21 @@
 .red{
     color:red;
 }
-#girls{
-    background-color:pink
+#red{
+    background-color:red;
 }
-#video_games{
-    background-color:orange;
+#green{
+    background-color:green;
 }
-#sports{
-    background-color:blueviolet;
+#blue{
+    background-color:blue;
 }
-#space{
-    background-color:turquoise;
+#white{
+    background-color:white;
+}
+#black{
+    background-color:black;
+}
+.xp {
+    background-color:pink;
 }

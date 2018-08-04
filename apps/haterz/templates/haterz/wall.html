@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'haterz/css/main.css' %}">
 </head>
 <body>
-    <div id ="{{settings.theme}}">
+    <div id ="{{settings.background_color}}" class = "{{settings.text_color}} {{settings.theme}}">
         <h1>{{user.first_name}}'s Wall</h1>
         <h2>Write a post</h2>
         <form action="/post/{{user.id}}" method="POST">
