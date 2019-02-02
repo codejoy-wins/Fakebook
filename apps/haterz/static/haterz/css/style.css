@@ -6,4 +6,14 @@
 }
 #rapper {
     background: linear-gradient(pink, blue);
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Noto Serif SC', serif;
+
+}
+
+#mj{
+    margin: 0 auto;
+    text-align: center;
+    
 }

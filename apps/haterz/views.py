@@ -17,12 +17,7 @@ def main(request):
         messages.error(request, "must be logged on first")
         return redirect('/')
     user = User.objects.get(id=request.session['user_id'])
-    # try:
-    #     print "TRY HARD"
-    #     # settings = Settings.objects.get(user= request.session['user_id'])
-    #     settings = Settings.objects.filter(user= request.session['user_id']).last()
-    # except:
-    #     settings = Settings.objects.create(background_color="white", text_color="green", theme="standard", user = User.objects.get(id=request.session['user_id']))
+
     try:
         settings = Settings.objects.filter(user=user).last()
     except:

@@ -7,49 +7,53 @@
     <title>Wall</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'haterz/css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
 </head>
 <body>
-    <div id ="{{settings.background_color}}" class = "{{settings.text_color}} {{settings.theme}}">
-        <h1>{{user.first_name}}'s Wall</h1>
-        <a href="/main">Return to Main Page?</a>
-        <h2>Write a post</h2>
-        <form action="/post/{{user.id}}" method="POST">
-            {% csrf_token %}
-            <p><textarea name="content" id="post" cols="30" rows="10"></textarea></p>
-            <p><input type="submit" value="Post"></p>
-        </form>
-        <!-- <h2>Posts so far</h2>
-        {% for post in posts %}
-            <p>{{post.content}} by {{post.author.first_name}}</p>
-        {% endfor %} -->
-        <h2>Posts for here</h2>
-        {% for post in my_posts %}
-            <h4>{{post.content}} by {{post.author.first_name}} at {{post.created_at}} {{post.liked_by.all.count}} like(s)   <a href="/like/{{post.id}}">Like</a> </h4>
-    
-            {% for x in post.liked_by.all %}
-                <p>  Liked by {{x.first_name}} </p>
-            {% endfor %}
-    
-            Comments on this post:
-            {% for comment in comments %}
-                {% if comment.post.id == post.id%}
-                    <h5>{{comment.content}} by {{comment.author.first_name}} at {{comment.created_at}}</h5>
-                {% endif %}
-            {% endfor %}
-            <form action="/comment/{{post.id}}" method="POST">
-                {% csrf_token %}
-                <textarea name="content" id="c" cols="30" rows="5"></textarea>
-                <input type="submit" value = "Comment">
-            </form>
-            <!-- <a href="/comment/{{post.id}}">Comment</a> -->
-        {% endfor %}
-            <p></p>
-        <a href="/main">Return to Main Page</a>
-
-
-        <h2>Your Settings: {{settings}}</h2>
-        <h3 class = "{{settings.text_color}}">Your text color is: {{settings.text_color}}</h3>
-        <h2> Your theme is: {{settings.theme}}</h2>
+    <div id="rapper">
+            <div id ="{{settings.background_color}}" class = "{{settings.text_color}} {{settings.theme}}">
+                    <h1>{{user.first_name}}'s Wall</h1>
+                    <a href="/main">Return to Main Page?</a>
+                    <h2>Write a post</h2>
+                    <form action="/post/{{user.id}}" method="POST">
+                        {% csrf_token %}
+                        <p><textarea name="content" id="post" cols="30" rows="10"></textarea></p>
+                        <p><input type="submit" value="Post"></p>
+                    </form>
+                    <!-- <h2>Posts so far</h2>
+                    {% for post in posts %}
+                        <p>{{post.content}} by {{post.author.first_name}}</p>
+                    {% endfor %} -->
+                    <h2>Posts for here</h2>
+                    {% for post in my_posts %}
+                        <h4> <div id="xx">{{post.content}}</div>  by {{post.author.first_name}} at {{post.created_at}} {{post.liked_by.all.count}} like(s)   <a href="/like/{{post.id}}">Like</a> </h4>
+                
+                        {% for x in post.liked_by.all %}
+                            <p>  Liked by {{x.first_name}} </p>
+                        {% endfor %}
+                
+                        Comments on this post:
+                        {% for comment in comments %}
+                            {% if comment.post.id == post.id%}
+                                <h5>{{comment.content}} by {{comment.author.first_name}} at {{comment.created_at}}</h5>
+                            {% endif %}
+                        {% endfor %}
+                        <form action="/comment/{{post.id}}" method="POST">
+                            {% csrf_token %}
+                            <textarea name="content" id="c" cols="30" rows="5"></textarea>
+                            <input type="submit" value = "Comment">
+                        </form>
+                        <!-- <a href="/comment/{{post.id}}">Comment</a> -->
+                    {% endfor %}
+                        <p></p>
+                    <a href="/main">Return to Main Page</a>
+            
+            
+                    <h3 class = "{{settings.text_color}}">Your text color is: {{settings.text_color}}</h3>
+                    <h2> Your theme is: {{settings.theme}}</h2>
+                </div>
     </div>
+    
 </body>
 </html>
